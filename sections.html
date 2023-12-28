@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+  <title>photografy portafolio</title>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div class="top">
+        <div class="logo">
+          <i class="bx bxl-codepen"></i>
+          <span>Photografy portafolio</span>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+    </div>
+    <div class="user">
+      <img src="images/logo.jpeg" alt="logo" class="logo-img">
+      <div>
+        <p class="bold">Phografy Manager</p>
+        <p>Welcome</p>
+      </div>
+    </div>
+    <ul>
+      <li>
+        <a href="#seccion1">
+          <i class="bx bxs-video-recording"></i>
+          <span class="nav-item">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="#seccion2">
+          <i class="bx bxs-face"></i>
+          <span class="nav-item">Me</span>
+        </a>
+        <span class="tooltip">Me</span>
+      </li>
+      <li>
+        <a href="#seccion3">
+          <i class="bx bxs-mouse-alt"></i>
+          <span class="nav-item">knowledge</span>
+        </a>
+        <span class="tooltip">knowledge</span>
+      </li>
+      <li>
+        <a href="#seccion4">
+          <i class="bx bxs-copy-alt"></i>
+          <span class="nav-item">contact</span>
+        </a>
+        <span class="tooltip">contact</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="seccion seccion1" id="seccion1">
+    <h1>Miguel Angel Muñoz</h1>
+    <p>photographer and programmer</p>
+  </div>
+  <div class="seccion seccion2" id="seccion2">
+      <h2>ABOUT ME</h2>
+      <p>I am a programmer, with emphasis in web programming, backend and frontend, with experience and knowledge in html, css, javascript, php, c#, microservices, git, docker...
+      </p>
+      <p>I am a photographer focused on landscaping and events, being my job to capture in the most realistic and pure way the moments of the 
+        the most realistic and pure way the moments of both people and environments.
+      </p>
+  </div>
+  <div class="seccion seccion3" id="seccion3">
+    <h2>My knowledge</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <div class="service-image">
+                  <img src="images/python.png" class="cuote">
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="service-image">
+                  <img src="images/php.png" class="cuote">
+                  
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="service-image">
+                  <img src="images/html-css-javascript.jpg" class="cuote">
+              </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="service-image">
+                <img src="images/docker.png" class="cuote">
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="service-image">
+                <img src="images/csharp.png" class="cuote">
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="seccion seccion4" id="seccion4">
+    <div class="contact">
+      <h2>Contact me</h2>
+      <p>E-mail: miguel@coursera.com</p>
+      <p>Number: 234234234</p>
+      <p>Linkelind: miguelPhotoAndProgramer</p>
+    </div>
+  </div>
+
+  
+
+  <script>
+    let btn = document.querySelector('#btn')
+    let sidebar = document.querySelector('.sidebar')
+
+    btn.onclick = function (){
+       sidebar.classList.toggle('active')
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const secciones = document.querySelectorAll('.seccion');
+      let timeout;
+
+      window.addEventListener('scroll', function() {
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+          let seccionVisible = null;
+          let mayorAltura = 0;
+
+          secciones.forEach((seccion, index) => {
+            const rect = seccion.getBoundingClientRect();
+            const alturaVisible = Math.min(rect.height, window.innerHeight - rect.top, rect.bottom);
+
+            if (alturaVisible > mayorAltura) {
+              mayorAltura = alturaVisible;
+              seccionVisible = index;
+            }
+          });
+
+          if (seccionVisible !== null) {
+            const offsetY = secciones[seccionVisible].offsetTop;
+            window.scrollTo({ top: offsetY, behavior: 'smooth' });
+          }
+        }, 200); // Ajusta el tiempo de inactividad requerido
+      });
+    }); 
+
+    
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container',{
+            effect:'coverflow',
+            grabCursor:true,
+            centeredSlides:true,
+            slidesPerView:'auto',
+            coverflowEffect:{
+                rotate:60,
+                stretch:200,
+                depth:1000,
+                modifier:1,
+                slideShadows:true,
+                slideOpacity:10
+            },
+            pagination:{
+                el:'.swiper-pagination',
+            },
+        });
+    </script>
+</body>
+</html>
