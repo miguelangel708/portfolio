@@ -152,6 +152,7 @@ body {
 }
 
 .sidebar ul li .tooltip{
+    color: #eee;
     position: absolute;
     left: 125px;
     top: 50%;
